@@ -1,38 +1,56 @@
-# ✨ CRA + Ant-Design + X Boilerplate ✨
+# WIKI Chart 
 
-This is a boilerplate project for a React based Single Page Application. It is based on the popular create-react-app template and uses ant designs ui components.
+## Summary
+- After researching, instead of scan any table, I've scan only table with the class `sortable` which will be best fit for extracting chart data.
+- In demonstration purpose, I've only parsed 1st match table.sortable in given url.
+- While parsing table into data, I've mark th cell as main criteria in chart, if `th` not found it will get closet non-numeric column as main criteria.
+- I made the chart based on 1st numeric column.
+- Supported numeric column pattern: 
+ + contain only number , ex: 123, 100,000,000, 111.5 (comma character if any will be removed by using regex).
+ + contain number and notation following behind, ex: 123 ft, 999 mm...
+- Unsupported numeric column pattern: 
+ + date time data like 14 March 1983,...
+ + phone number: 111-333-999-0000,...
+- output is an svg chart instead save as an image.
 
-# Features
+ ## Todo
+- Provide test cases / acceptant criterias.
+- Provide unittest for frontend and backend.
+- Support parsing date time data.
+- Make output save as an image.
 
-:white_check_mark: Awesome development setup (cra, cra-rewired, typescript, fast-refresh)
 
-:white_check_mark: Awesome UI Components (ant design, themeable)
+## Local machine dependency:
+- git
+- nodejs ^14x
+- yarn
 
-:white_check_mark: Client side routing (react-router)
-
-:white_check_mark: Easy forms (formik + bindings)
-
-# Getting started
-
-Click the green `Use this template` button to copy all content to a new github repository or execute following commands on your cli:
-
+## [FrontEnd] setup and run
+(Default: Frontend will run on PORT : 3000)
+- install dependency
+```sh
+cd ./client
+yarn install
 ```
-git clone https://github.com/jannikbuschke/cra-antd-x
-cd cra-antd-x/
-rm .git -rf
-npm install
-npm run start
+- start app (in the same pwd)
+```sh
+yarn start
 ```
 
-| Dependency  | Descript | Popularity |
-| ------------- | ------------- |--|
-| [React](https://github.com/facebook/react) | JavaScript library for UIs | ![Github stars](https://img.shields.io/github/stars/facebook/react) |
-| [Create React App](https://github.com/facebook/create-react-app)  | A very solid react template | ![Github stars](https://img.shields.io/github/stars/facebook/create-react-app) |
-| [Ant Design](https://github.com/ant-design/ant-design) | Nice UI components | ![Github Stars](https://img.shields.io/github/stars/ant-design/ant-design) |
-| [TypeScript](https://github.com/microsoft/TypeScript) | Provides compile time types | ![Github stars](https://img.shields.io/github/stars/microsoft/TypeScript) |
-| [react-app-rewired](https://github.com/timarney/react-app-rewired)  | Allows overriding CRA/webpack configs | ![Github stars](https://img.shields.io/github/stars/timarney/react-app-rewired) |
-| [react-router](https://github.com/ReactTraining/react-router) | Declarative client side routings | ![Github stars](https://img.shields.io/github/stars/ReactTraining/react-router) |
-| [formik](https://github.com/jaredpalmer/formik) + [formik-antd](https://github.com/jannikbuschke/formik-antd) | Form management (without tears) + Declarative bindings | ![Github stars](https://img.shields.io/github/stars/jaredpalmer/formik) |
-| [dayjs](https://github.com/iamkun/dayjs) | Tiny datetime library | ![Github stars](https://img.shields.io/github/stars/iamkun/dayjs) |
-| [styled-components](https://github.com/styled-components/styled-components) | Css-in-js library (future unclear) | ![Github stars](https://img.shields.io/github/stars/styled-components/styled-components) |
-| [less](https://github.com/less/less.js) | Dynamic css (used because of ant design, future unclear) | ![Github stars](https://img.shields.io/github/stars/less/less.js) |
+## [BackEnd] setup and run
+(Default: Backend will run on PORT : 4001)
+
+- install dependency
+```sh
+cd ./server
+yarn install
+```
+- start app (in the same pwd)
+```sh
+yarn start
+```
+
+**Testing**
+
+- Front-end: http://localhost:3000
+- Back-end: http://localhost:4001

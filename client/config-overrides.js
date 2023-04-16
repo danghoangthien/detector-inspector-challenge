@@ -1,7 +1,8 @@
-const { override, fixBabelImports, addLessLoader } = require("customize-cra")
+const { override, fixBabelImports, addLessLoader, useBabelRc } = require("customize-cra")
 const { addReactRefresh } = require("customize-cra-react-refresh")
 
 module.exports = override(
+  useBabelRc(),
   fixBabelImports("antd", {
     libraryName: "antd",
     libraryDirectory: "es",

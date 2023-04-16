@@ -1,39 +1,43 @@
-import React from "react"
-import logo from "./logo.svg"
+import React, { useState } from "react"
+
 import "./App.css"
 import { Formik } from "formik"
 import { Input, SubmitButton, Form } from "formik-antd"
-import { notification } from "antd"
-import { AntDesignOutlined } from "@ant-design/icons"
 
-function App() {
+import { AntDesignOutlined } from "@ant-design/icons"
+import ChartContainer from './components/ChartContainer';
+
+
+
+function App() : JSX.Element {
+  //const url = 'https://en.wikipedia.org/wiki/FIFA_World_Player_of_the_Year';
+  const [url, setUrl] = useState('');
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-
       <div style={{ background: "white", padding: "20px" }}>
         <Formik
-          initialValues={{ field1: "hello world" }}
-          onSubmit={(values, f) => {
-            notification.info({ message: values.field1 })
+          initialValues={{}}
+          onSubmit={(values: any, f) => {
+            setUrl(values.url);
             f.setSubmitting(false)
           }}
         >
           <Form>
-            <Input name="field1" />
+            <Input name="url" placeholder="wiki url for chart generating"/>
             <SubmitButton
               style={{ marginTop: 10 }}
               icon={<AntDesignOutlined />}
             >
-              Submit
+              Generate Chart
             </SubmitButton>
           </Form>
         </Formik>
+        <br />
+        <ChartContainer url={url} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
